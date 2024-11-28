@@ -1,11 +1,14 @@
 package exercicios;
 
+import java.util.ArrayList;
+
 public class Conta {
 	private String numeroConta;
 	private String agencia;
 	private String nomeCliente;
 	private String dataNascimento;
     private double saldo;
+    private boolean ativa;
 
     public Conta(String conta, String agencia, String nome, String nascimento, double saldo){
         this.numeroConta = conta;
@@ -13,6 +16,7 @@ public class Conta {
         this.nomeCliente = nome;
         this.dataNascimento = nascimento;
         this.saldo = saldo;
+        this.ativa = true;
     }
     
     public String getNumeroConta() {
@@ -56,7 +60,7 @@ public class Conta {
 		this.saldo = saldo;
 	}
 
-	public void Sacar(double valor){
+	public void sacar(double valor){
         if(valor > this.saldo || this.saldo == 0){
             System.out.println("Saldo insuficiente");
         }else{
@@ -65,11 +69,11 @@ public class Conta {
         }
     }
 
-    public void ConsultarSaldo(){
+    public void consultarSaldo(){
         System.out.println("O seu saldo atual é " + this.saldo);
     }
 
-    public void Transferir(Conta alvo, double valor){
+    public void transferir(Conta alvo, double valor){
         if(this.saldo >= 0 && this.saldo >= valor){
             this.saldo -= valor;
             alvo.saldo += valor;
@@ -79,7 +83,12 @@ public class Conta {
         }
     }
 
-    public void FecharConta(String justificativa){
+    public void fecharConta(String justificativa){
         System.out.println("Motivo do cancelamento da conta: " + justificativa);
+        this.ativa = false;
+    }
+    
+    public ArrayList<String> consutarExtrato() {
+    	return null;
     }
 }
