@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="aula sintaxe e semantica">
-      <change afterPath="$PROJECT_DIR$/src/rocket_02_variaveis/VariaveisApp.java" afterDir="false" />
+    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="aula variaveis">
+      <change afterPath="$PROJECT_DIR$/src/exercicios/BancoApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exercicios/Conta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.BancoApp.executor": "Run",
     "Application.ContaApp.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -83,12 +85,21 @@
       <option name="project" value="LOCAL" />
       <updated>1732656420638</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="aula variaveis">
+      <option name="closed" value="true" />
+      <created>1732656863829</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732656863829</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit inicial" />
     <MESSAGE value="aula sintaxe e semantica" />
-    <option name="LAST_COMMIT_MESSAGE" value="aula sintaxe e semantica" />
+    <MESSAGE value="aula variaveis" />
+    <option name="LAST_COMMIT_MESSAGE" value="aula variaveis" />
   </component>
 </project>
