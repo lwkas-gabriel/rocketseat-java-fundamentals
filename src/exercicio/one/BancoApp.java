@@ -1,4 +1,4 @@
-package exercicios;
+package exercicio.one;
 
 public class BancoApp {
     public static void main(String[] args) {
