@@ -1,24 +1,25 @@
 package sistema_gerenciamento_livraria;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Random;
 
 public class Autor {
     private int id;
     private String nome;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
 
-    public Autor(String nome, Date dataNascimento) {
+    public Autor(String nome, String dataNascimento, String data) {
         this.id = new Random().nextInt(Integer.MAX_VALUE);
         this.nome = nome;
-        this.dataNascimento = dataNascimento;
+        this.dataNascimento = LocalDate.parse(dataNascimento);
     }
 
     public String getNome() {
         return nome;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
