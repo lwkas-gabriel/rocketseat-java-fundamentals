@@ -15,7 +15,7 @@ public class Livro {
         this.id = new Random().nextInt(Integer.MAX_VALUE);
         this.titulo = titulo;
         this.autor = autor;
-        this.isDisponivel = true;
+        this.isDisponivel = true; // se true = disponivel, se false = não disponível
         this.dataCadastro = new Date();
         this.dataAtualizacao = new Date();
     }
