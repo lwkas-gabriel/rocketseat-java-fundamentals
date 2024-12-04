@@ -1,5 +1,7 @@
 package sistema_gerenciamento_livraria;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Random;
 
@@ -8,16 +10,16 @@ public class Livro {
     private String titulo;
     private String autor;
     private boolean isDisponivel;
-    private Date dataCadastro;
-    private Date dataAtualizacao;
+    private LocalDate dataCadastro;
+    private LocalDateTime dataAtualizacao;
 
     public Livro(String titulo, String autor){
         this.id = new Random().nextInt(Integer.MAX_VALUE);
         this.titulo = titulo;
         this.autor = autor;
         this.isDisponivel = true; // se true = disponivel, se false = não disponível
-        this.dataCadastro = new Date();
-        this.dataAtualizacao = new Date();
+        this.dataCadastro = LocalDate.now();
+        this.dataAtualizacao = LocalDateTime.now();
     }
 
     public int getId(){
@@ -48,16 +50,16 @@ public class Livro {
         this.isDisponivel = !this.isDisponivel;
     }
 
-    public Date getDataCadastro(){
+    public LocalDate getDataCadastro(){
         return this.dataCadastro;
     }
 
-    public void setDataAtualizacao(Date atualizacao){
-        this.dataAtualizacao = atualizacao;
+    public void setDataAtualizacao(){
+        this.dataAtualizacao = LocalDateTime.now();
 
     }
 
-    public Date getDataAtualizacao(){
+    public LocalDateTime getDataAtualizacao(){
         return this.dataAtualizacao;
     }
 }
