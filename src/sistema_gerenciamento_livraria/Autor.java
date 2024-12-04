@@ -1,6 +1,7 @@
 package sistema_gerenciamento_livraria;
 
 import java.util.Date;
+import java.util.Random;
 
 public class Autor {
     private int id;
@@ -8,6 +9,7 @@ public class Autor {
     private Date dataNascimento;
 
     public Autor(String nome, Date dataNascimento) {
+        this.id = new Random().nextInt(Integer.MAX_VALUE);
         this.nome = nome;
         this.dataNascimento = dataNascimento;
     }
