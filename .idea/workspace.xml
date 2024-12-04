@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="aula variaveis">
-      <change afterPath="$PROJECT_DIR$/src/rocket_03_java_beans/Aluno.java" afterDir="false" />
+    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="aula de padrão java beans - getters e setters">
+      <change afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Livro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercicios/BancoApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercicio/one/BancoApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercicios/Conta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercicio/one/Conta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,13 +92,22 @@
       <option name="project" value="LOCAL" />
       <updated>1732656863829</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="aula de padrão java beans - getters e setters">
+      <option name="closed" value="true" />
+      <created>1733261704463</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733261704463</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit inicial" />
     <MESSAGE value="aula sintaxe e semantica" />
     <MESSAGE value="aula variaveis" />
-    <option name="LAST_COMMIT_MESSAGE" value="aula variaveis" />
+    <MESSAGE value="aula de padrão java beans - getters e setters" />
+    <option name="LAST_COMMIT_MESSAGE" value="aula de padrão java beans - getters e setters" />
   </component>
 </project>
