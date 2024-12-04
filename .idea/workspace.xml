@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="gerenciamento livraria: classe autor">
-      <change afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Biblioteca.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Emprestimo.java" afterDir="false" />
+    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="gerenciamento livraria: refactor na classe autor, adicionando data no construtor">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/LivrariaApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Livro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Livro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Biblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Biblioteca.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,18 +50,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.BancoApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ContaApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Wanderer/IdeaProjects/rocketseat-java-fundamentals/src/Main.java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.BancoApp.executor": "Run",
+    "Application.ContaApp.executor": "Run",
+    "Application.LivrariaApp.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "C:/Users/Wanderer/IdeaProjects/rocketseat-java-fundamentals/src/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="LivrariaApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sistema_gerenciamento_livraria.LivrariaApp" />
+      <module name="rocketseat-java-fundamentals" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sistema_gerenciamento_livraria.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.LivrariaApp" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -119,7 +144,39 @@
       <option name="project" value="LOCAL" />
       <updated>1733348699471</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="gerenciamento livraria: classes biblioteca, cliente, emprestimo + funcionalidades adicionar livro, listar disponíveis e emprestimos">
+      <option name="closed" value="true" />
+      <created>1733349951602</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733349951602</updated>
+    </task>
+    <task id="LOCAL-00008" summary="gerenciamento livraria: refactor na classe livro">
+      <option name="closed" value="true" />
+      <created>1733350145655</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1733350145655</updated>
+    </task>
+    <task id="LOCAL-00009" summary="gerenciamento livraria: refactor na classe livro 2">
+      <option name="closed" value="true" />
+      <created>1733352482949</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1733352482949</updated>
+    </task>
+    <task id="LOCAL-00010" summary="gerenciamento livraria: refactor na classe autor, adicionando data no construtor">
+      <option name="closed" value="true" />
+      <created>1733352507262</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1733352507262</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -129,6 +186,15 @@
     <MESSAGE value="aula de padrão java beans - getters e setters" />
     <MESSAGE value="gerenciamento livraria: classe livro" />
     <MESSAGE value="gerenciamento livraria: classe autor" />
-    <option name="LAST_COMMIT_MESSAGE" value="gerenciamento livraria: classe autor" />
+    <MESSAGE value="gerenciamento livraria: classes biblioteca, cliente, emprestimo + funcionalidades adicionar livro, listar disponíveis e emprestimos" />
+    <MESSAGE value="gerenciamento livraria: refactor na classe livro" />
+    <MESSAGE value="gerenciamento livraria: refactor na classe livro 2" />
+    <MESSAGE value="gerenciamento livraria: refactor na classe autor, adicionando data no construtor" />
+    <option name="LAST_COMMIT_MESSAGE" value="gerenciamento livraria: refactor na classe autor, adicionando data no construtor" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/rocketseat_java_fundamentals$LivrariaApp.ic" NAME="LivrariaApp Coverage Results" MODIFIED="1733352217523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>sistema_gerenciamento_livraria.*</FILTER>
+    </SUITE>
   </component>
 </project>
