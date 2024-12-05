@@ -53,10 +53,10 @@ public class Biblioteca {
 
     public void listarClientes(){
         if (this.clientes.isEmpty()){
-            System.out.println("Nenhum cliente cadastrado!.");
+            System.out.println("Nenhum cliente cadastrado!");
         }else{
             for(Cliente cliente : this.clientes){
-                System.out.println(cliente.getId() + " - " + cliente.getNome() + " (" +cliente.getEmail() + ")");
+                System.out.println(cliente.getId() + " - " + cliente.getNome() + " (" +cliente.getEmail() + ")" + " - Data de Nascimento: " + cliente.getDataNascimento());
             }
         }
     }
@@ -95,14 +95,21 @@ public class Biblioteca {
         Scanner s1 = new Scanner(System.in);
         int menu = 0;
         do {
-            System.out.println("Bem-vindo ao sistema!");
+            System.out.println("===============================");
+            System.out.println("Bem-vindo ao sistema de livraria 1.0!!");
             System.out.println("1 - Cadastrar Cliente");
             System.out.println("2 - Cadastrar Livro");
-            System.out.println("2 - Listar livros disponíveis");
-            System.out.println("3 - Fazer emprestimo!");
+            System.out.println("3 - Listar livros disponíveis");
+            System.out.println("4 - Fazer emprestimo!");
+            System.out.println("5 - Listar Clientes!");
+            System.out.println("0 - Encerrar atendimento");
+            System.out.println("===============================");
             menu = s.nextInt();
 
             switch (menu){
+                case 0:
+                    System.out.println("Encerrando...");
+                    break;
                 case 1:
                     String nomeCliente;
                     String emailCliente;
@@ -137,6 +144,10 @@ public class Biblioteca {
                     listarLivrosDisponiveis();
                     codigoLivro = s1.nextInt();
                     emprestimoLivro(codigoLivro);
+                    break;
+                case 5:
+                    System.out.println("Listagem de clientes cadastrados:");
+                    listarClientes();
                     break;
                 default:
                     System.out.println("Erro! Digite uma operação válida!");
