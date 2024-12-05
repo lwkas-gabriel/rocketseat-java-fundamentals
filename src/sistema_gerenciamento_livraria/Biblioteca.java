@@ -5,9 +5,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Biblioteca {
-    private List<Livro> livros = new ArrayList<>();
-    private List<Autor> autores = new ArrayList<>();
-    private List<Emprestimo> emprestimos = new ArrayList<>();
+    private List<Livro> livros;
+    private List<Autor> autores;
+    private List<Cliente> clientes;
+    private List<Emprestimo> emprestimos;
+
+    public Biblioteca() {
+        this.autores = new ArrayList<>();
+        this.emprestimos = new ArrayList<>();;
+        this.livros = new ArrayList<>();
+        this.clientes = new ArrayList<>();
+    }
 
     public List<Livro> getLivros() {
         return livros;
@@ -33,8 +41,24 @@ public class Biblioteca {
         this.emprestimos = emprestimos;
     }
 
+    public void cadastrarCliente(Cliente novoCliente){
+        this.clientes.add(novoCliente);
+        System.out.println("Cliente cadastrado com sucesso!");
+    }
+
     public void adicionarLivro(Livro novoLivro){
         this.livros.add(novoLivro);
+        System.out.println("Livro cadastrado com sucesso!");
+    }
+
+    public void listarClientes(){
+        if (this.clientes.isEmpty()){
+            System.out.println("Nenhum cliente cadastrado!.");
+        }else{
+            for(Cliente cliente : this.clientes){
+                System.out.println(cliente.getId() + " - " + cliente.getNome() + " (" +cliente.getEmail() + ")");
+            }
+        }
     }
 
     public void listarLivrosDisponiveis(){
@@ -72,13 +96,26 @@ public class Biblioteca {
         int menu = 0;
         do {
             System.out.println("Bem-vindo ao sistema!");
-            System.out.println("1 - Cadastrar Livro");
+            System.out.println("1 - Cadastrar Cliente");
+            System.out.println("2 - Cadastrar Livro");
             System.out.println("2 - Listar livros disponíveis");
             System.out.println("3 - Fazer emprestimo!");
             menu = s.nextInt();
 
             switch (menu){
                 case 1:
+                    String nomeCliente;
+                    String emailCliente;
+                    String dataNascimentoCliente;
+                    System.out.println("Inserir nome do cliente:");
+                    nomeCliente = s1.nextLine();
+                    System.out.println("Inserir email do cliente:");
+                    emailCliente = s1.nextLine();
+                    System.out.println("Inserir data de nascimento do cliente: (YYYY-MM-DD)");
+                    dataNascimentoCliente = s1.nextLine();
+                    cadastrarCliente(new Cliente(nomeCliente, emailCliente, dataNascimentoCliente));
+                    break;
+                case 2:
                     String nomeAutor;
                     String tituloLivro;
                     //String dataNascimento;
@@ -90,11 +127,11 @@ public class Biblioteca {
                     //dataNascimento = s.nextLine();
                     adicionarLivro(new Livro(tituloLivro, nomeAutor));
                     break;
-                case 2:
+                case 3:
                     System.out.println("Livros Disponíveis para empréstimo");
                     listarLivrosDisponiveis();
                     break;
-                case 3:
+                case 4:
                     int codigoLivro;
                     System.out.println("Selecione um dos livros abaixo:");
                     listarLivrosDisponiveis();
