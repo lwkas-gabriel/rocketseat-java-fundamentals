@@ -38,11 +38,13 @@ public class Biblioteca {
     }
 
     public void listarLivrosDisponiveis(){
-        for(Livro livro : this.livros){
-            if(livro.getIsDisonivel()){
-                System.out.println(livro.getId() + " - " + livro.getTitulo() + " (" +livro.getAutor() + ")");
-            }else{
-                continue;
+        if (this.livros.isEmpty()){
+            System.out.println("Sinto muito, mas não temos livros disponíveis para empréstimo.");
+        }else{
+            for(Livro livro : this.livros){
+                if(livro.getIsDisonivel()){
+                    System.out.println(livro.getId() + " - " + livro.getTitulo() + " (" +livro.getAutor() + ")");
+                }
             }
         }
     }
@@ -51,8 +53,15 @@ public class Biblioteca {
         for(Livro livro : this.livros){
             if(!livro.getIsDisonivel()){
                 System.out.println(livro.getId() + " - " + livro.getTitulo() + " (" +livro.getAutor() + ")");
-            }else{
-                continue;
+            }
+        }
+    }
+
+    public void emprestimoLivro(int codigo){
+        for(Livro livro : this.livros){
+            if(livro.getId() == codigo){
+                System.out.println("Empréstimo Efetuado!");
+                livro.setIsDisponivel();
             }
         }
     }
@@ -86,9 +95,14 @@ public class Biblioteca {
                     listarLivrosDisponiveis();
                     break;
                 case 3:
-                    //System.out.println("Livros Emprestados");
-                    //listarEmprestimos();
+                    int codigoLivro;
+                    System.out.println("Selecione um dos livros abaixo:");
+                    listarLivrosDisponiveis();
+                    codigoLivro = s1.nextInt();
+                    emprestimoLivro(codigoLivro);
                     break;
+                default:
+                    System.out.println("Erro! Digite uma operação válida!");
             }
         }while(menu != 0);
     }
