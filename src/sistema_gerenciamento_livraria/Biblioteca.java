@@ -17,30 +17,6 @@ public class Biblioteca {
         this.clientes = new ArrayList<>();
     }
 
-    public List<Livro> getLivros() {
-        return livros;
-    }
-
-    public void setLivros(List<Livro> livros) {
-        this.livros = livros;
-    }
-
-    public List<Autor> getAutores() {
-        return autores;
-    }
-
-    public void setAutores(List<Autor> autores) {
-        this.autores = autores;
-    }
-
-    public List<Emprestimo> getEmprestimos() {
-        return emprestimos;
-    }
-
-    public void setEmprestimos(List<Emprestimo> emprestimos) {
-        this.emprestimos = emprestimos;
-    }
-
     public Cliente getClienteById(int codigo){
         for(Cliente cliente : this.clientes){
             if(cliente.getId() == codigo){
@@ -92,10 +68,16 @@ public class Biblioteca {
     }
 
     public void listarEmprestimos(){
-        for(Livro livro : this.livros){
-            if(!livro.getIsDisonivel()){
-                System.out.println(livro.getId() + " - " + livro.getTitulo() + " (" +livro.getAutor() + ")");
-            }
+        for(Emprestimo emprestimo : this.emprestimos){
+            System.out.println("============");
+            System.out.println("Empréstimo efetuado por:  " + emprestimo.getCliente().getNome());
+            System.out.println("Nome do Livro: " + emprestimo.getLivroEmprestado().getTitulo());
+            System.out.println("Autor: "  + emprestimo.getLivroEmprestado().getAutor());
+            System.out.println("Data do Empréstimo: " + emprestimo.getHorarioEmprestimo());
+            System.out.println("Devolvido?" + ((emprestimo.isDevolvido()) ? "Sim." : "Não.") );
+            System.out.println("Data da devolução: " + ((emprestimo.isDevolvido()) ? emprestimo.getHorarioDevolucao() : "N/A") );
+            System.out.println("============");
+
         }
     }
 
@@ -110,20 +92,26 @@ public class Biblioteca {
         emprestimos.add(novoEmprestimo);
     }
 
+    public void imprimirMenu(){
+        System.out.println("===============================");
+        System.out.println("Bem-vindo ao sistema de livraria 1.0!!");
+        System.out.println("1 - Cadastrar Cliente");
+        System.out.println("2 - Cadastrar Livro");
+        System.out.println("3 - Listar livros disponíveis");
+        System.out.println("4 - Fazer emprestimo!");
+        System.out.println("5 - Listar Clientes!");
+        System.out.println("6 - Exibir histórico de emprestimos");
+        System.out.println("7 - Efetuar devolução");
+        System.out.println("0 - Encerrar atendimento");
+        System.out.println("===============================");
+    }
+
     public void iniciarAtendimento(){
         Scanner s = new Scanner(System.in);
         Scanner s1 = new Scanner(System.in);
         int menu = 0;
         do {
-            System.out.println("===============================");
-            System.out.println("Bem-vindo ao sistema de livraria 1.0!!");
-            System.out.println("1 - Cadastrar Cliente");
-            System.out.println("2 - Cadastrar Livro");
-            System.out.println("3 - Listar livros disponíveis");
-            System.out.println("4 - Fazer emprestimo!");
-            System.out.println("5 - Listar Clientes!");
-            System.out.println("0 - Encerrar atendimento");
-            System.out.println("===============================");
+            imprimirMenu();
             menu = s.nextInt();
 
             switch (menu){
@@ -179,6 +167,11 @@ public class Biblioteca {
                 case 5:
                     System.out.println("Listagem de clientes cadastrados:");
                     listarClientes();
+                    break;
+                case 6:
+                    listarEmprestimos();
+                    break;
+                case 7:
                     break;
                 default:
                     System.out.println("Erro! Digite uma operação válida!");

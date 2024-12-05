@@ -1,6 +1,7 @@
 package sistema_gerenciamento_livraria;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Emprestimo {
@@ -11,18 +12,25 @@ public class Emprestimo {
     private boolean isDevolvido;
 
     public Emprestimo(Livro livro, Cliente cliente){
+        this.cliente = cliente;
         this.livroEmprestado = livro;
         this.horarioEmprestimo = LocalDateTime.now();
         this.horarioDevolucao = null;
         this.isDevolvido = false; // se true, devolvido, se false, não
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
     public Livro getLivroEmprestado() {
         return livroEmprestado;
     }
 
-    public LocalDateTime getHorarioEmprestimo() {
-        return horarioEmprestimo;
+    public String getHorarioEmprestimo() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        String dataFormatada = horarioEmprestimo.format(formatter);
+        return dataFormatada;
     }
 
     public boolean isDevolvido() {
@@ -37,8 +45,10 @@ public class Emprestimo {
         this.isDevolvido = !isDevolvido;
     }
 
-    public LocalDateTime getHorarioDevolucao() {
-        return horarioDevolucao;
+    public String getHorarioDevolucao() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        String dataFormatada = horarioDevolucao.format(formatter);
+        return dataFormatada;
     }
 
     public void setHorarioDevolucao() {
