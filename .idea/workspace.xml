@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="gerenciamento livraria: implementando cadastro de clientes">
+    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="gerenciamento livraria: refatorando menu do app e implementando listagemm de clientes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Biblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Biblioteca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Emprestimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Emprestimo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +37,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -205,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733410369688</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="gerenciamento livraria: refatorando menu do app e implementando listagemm de clientes">
+      <option name="closed" value="true" />
+      <created>1733411011146</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1733411011146</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -223,7 +232,8 @@
     <MESSAGE value="gerenciamento livraria: implementando função de emprestimo de livro" />
     <MESSAGE value="gerenciamento livraria: implementando classe cliente" />
     <MESSAGE value="gerenciamento livraria: implementando cadastro de clientes" />
-    <option name="LAST_COMMIT_MESSAGE" value="gerenciamento livraria: implementando cadastro de clientes" />
+    <MESSAGE value="gerenciamento livraria: refatorando menu do app e implementando listagemm de clientes" />
+    <option name="LAST_COMMIT_MESSAGE" value="gerenciamento livraria: refatorando menu do app e implementando listagemm de clientes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rocketseat_java_fundamentals$LivrariaApp.ic" NAME="LivrariaApp Coverage Results" MODIFIED="1733352217523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

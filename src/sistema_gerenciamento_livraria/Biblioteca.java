@@ -41,6 +41,24 @@ public class Biblioteca {
         this.emprestimos = emprestimos;
     }
 
+    public Cliente getClienteById(int codigo){
+        for(Cliente cliente : this.clientes){
+            if(cliente.getId() == codigo){
+                return cliente;
+            }
+        }
+        return null;
+    }
+
+    public Livro getLivroById(int codigo){
+        for(Livro livro : this.livros){
+            if(livro.getId() == codigo){
+                return livro;
+            }
+        }
+        return null;
+    }
+
     public void cadastrarCliente(Cliente novoCliente){
         this.clientes.add(novoCliente);
         System.out.println("Cliente cadastrado com sucesso!");
@@ -81,13 +99,15 @@ public class Biblioteca {
         }
     }
 
-    public void emprestimoLivro(int codigo){
+    public void emprestimoLivro(int codigo, Cliente clienteAtual, Livro livroDesejado){
         for(Livro livro : this.livros){
             if(livro.getId() == codigo){
                 System.out.println("Empréstimo Efetuado!");
                 livro.setIsDisponivel();
             }
         }
+        Emprestimo novoEmprestimo = new Emprestimo(livroDesejado, clienteAtual);
+        emprestimos.add(novoEmprestimo);
     }
 
     public void iniciarAtendimento(){
@@ -140,10 +160,21 @@ public class Biblioteca {
                     break;
                 case 4:
                     int codigoLivro;
+                    int codigoCliente;
+                    Cliente atual;
+                    Livro desejado;
                     System.out.println("Selecione um dos livros abaixo:");
                     listarLivrosDisponiveis();
                     codigoLivro = s1.nextInt();
-                    emprestimoLivro(codigoLivro);
+                    System.out.println("Inserir código do cliente::");
+                    codigoCliente = s1.nextInt();
+                    atual = getClienteById(codigoCliente);
+                    desejado = getLivroById(codigoLivro);
+                    if(atual != null && desejado != null){
+                        emprestimoLivro(codigoLivro, atual, desejado);
+                    }else{
+                        System.out.println("Código(s) inválido(s), verifique e  digite novamente!");
+                    }
                     break;
                 case 5:
                     System.out.println("Listagem de clientes cadastrados:");

@@ -1,16 +1,19 @@
 package sistema_gerenciamento_livraria;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Emprestimo {
     private Livro livroEmprestado;
-    //private Cliente cliente;
-    private Date horarioEmprestimo;
+    private Cliente cliente;
+    private LocalDateTime horarioEmprestimo;
+    private LocalDateTime horarioDevolucao;
     private boolean isDevolvido;
 
-    public Emprestimo(Livro livro, Date dataEmprestimo){
+    public Emprestimo(Livro livro, Cliente cliente){
         this.livroEmprestado = livro;
-        this.horarioEmprestimo = dataEmprestimo;
+        this.horarioEmprestimo = LocalDateTime.now();
+        this.horarioDevolucao = null;
         this.isDevolvido = false; // se true, devolvido, se false, não
     }
 
@@ -18,7 +21,7 @@ public class Emprestimo {
         return livroEmprestado;
     }
 
-    public Date getHorarioEmprestimo() {
+    public LocalDateTime getHorarioEmprestimo() {
         return horarioEmprestimo;
     }
 
@@ -30,11 +33,15 @@ public class Emprestimo {
         this.livroEmprestado = livroEmprestado;
     }
 
-    public void setHorarioEmprestimo(Date horarioEmprestimo) {
-        this.horarioEmprestimo = horarioEmprestimo;
+    public void setDevolvido() {
+        this.isDevolvido = !isDevolvido;
     }
 
-    public void setDevolvido(boolean devolvido) {
-        isDevolvido = devolvido;
+    public LocalDateTime getHorarioDevolucao() {
+        return horarioDevolucao;
+    }
+
+    public void setHorarioDevolucao() {
+        this.horarioDevolucao = LocalDateTime.now();
     }
 }
