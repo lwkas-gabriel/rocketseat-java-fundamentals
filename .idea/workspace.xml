@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="gerenciamento livraria: implementando função de cadastrar livro e listar todos os livros disponíveis">
+    <list default="true" id="d6cfef16-1cd5-4b7b-9639-fae598b63527" name="Changes" comment="gerenciamento livraria: implementando função de emprestimo de livro">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Biblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Biblioteca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema_gerenciamento_livraria/Cliente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733352606294</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="gerenciamento livraria: implementando função de emprestimo de livro">
+      <option name="closed" value="true" />
+      <created>1733409254420</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733409254420</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -196,7 +204,8 @@
     <MESSAGE value="gerenciamento livraria: refactor na classe livro 2" />
     <MESSAGE value="gerenciamento livraria: refactor na classe autor, adicionando data no construtor" />
     <MESSAGE value="gerenciamento livraria: implementando função de cadastrar livro e listar todos os livros disponíveis" />
-    <option name="LAST_COMMIT_MESSAGE" value="gerenciamento livraria: implementando função de cadastrar livro e listar todos os livros disponíveis" />
+    <MESSAGE value="gerenciamento livraria: implementando função de emprestimo de livro" />
+    <option name="LAST_COMMIT_MESSAGE" value="gerenciamento livraria: implementando função de emprestimo de livro" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/rocketseat_java_fundamentals$LivrariaApp.ic" NAME="LivrariaApp Coverage Results" MODIFIED="1733352217523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
