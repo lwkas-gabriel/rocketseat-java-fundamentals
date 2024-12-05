@@ -28,7 +28,7 @@ public class Emprestimo {
     }
 
     public String getHorarioEmprestimo() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String dataFormatada = horarioEmprestimo.format(formatter);
         return dataFormatada;
     }
@@ -46,7 +46,7 @@ public class Emprestimo {
     }
 
     public String getHorarioDevolucao() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String dataFormatada = horarioDevolucao.format(formatter);
         return dataFormatada;
     }

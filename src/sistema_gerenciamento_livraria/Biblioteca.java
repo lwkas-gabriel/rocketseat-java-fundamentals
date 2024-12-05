@@ -68,16 +68,19 @@ public class Biblioteca {
     }
 
     public void listarEmprestimos(){
-        for(Emprestimo emprestimo : this.emprestimos){
-            System.out.println("============");
-            System.out.println("Empréstimo efetuado por:  " + emprestimo.getCliente().getNome());
-            System.out.println("Nome do Livro: " + emprestimo.getLivroEmprestado().getTitulo());
-            System.out.println("Autor: "  + emprestimo.getLivroEmprestado().getAutor());
-            System.out.println("Data do Empréstimo: " + emprestimo.getHorarioEmprestimo());
-            System.out.println("Devolvido?" + ((emprestimo.isDevolvido()) ? "Sim." : "Não.") );
-            System.out.println("Data da devolução: " + ((emprestimo.isDevolvido()) ? emprestimo.getHorarioDevolucao() : "N/A") );
-            System.out.println("============");
-
+        if(this.emprestimos.isEmpty()){
+            System.out.println("Sinto muito, mas ainda não fizemos nenhum empréstimo hoje!.");
+        }else{
+            for(Emprestimo emprestimo : this.emprestimos){
+                System.out.println("============");
+                System.out.println("Empréstimo efetuado por:  " + emprestimo.getCliente().getNome());
+                System.out.println("Nome do Livro: " + emprestimo.getLivroEmprestado().getTitulo());
+                System.out.println("Autor: "  + emprestimo.getLivroEmprestado().getAutor());
+                System.out.println("Data do Empréstimo: " + emprestimo.getHorarioEmprestimo());
+                System.out.println("Devolvido? " + ((emprestimo.isDevolvido()) ? "Sim." : "Não.") );
+                System.out.println("Data da devolução: " + ((emprestimo.isDevolvido()) ? emprestimo.getHorarioDevolucao() : "N/A") );
+                System.out.println("============");
+            }
         }
     }
 
@@ -90,6 +93,29 @@ public class Biblioteca {
         }
         Emprestimo novoEmprestimo = new Emprestimo(livroDesejado, clienteAtual);
         emprestimos.add(novoEmprestimo);
+    }
+
+    public void getLivrosEmprestadosByClienteId(){
+
+    }
+
+    public void devolverLivro(int codigoCliente){
+        if (this.emprestimos.isEmpty()){
+            System.out.println("Nenhum livro emprestrado!");
+        }else{
+            for(Emprestimo emprestimo : this.emprestimos){
+                if(emprestimo.getCliente().getId() == codigoCliente){
+                    int codigoLivro = emprestimo.getLivroEmprestado().getId();
+                    emprestimo.setDevolvido();
+                    emprestimo.setHorarioDevolucao();
+                    for (Livro livro : this.livros){
+                        if(livro.getId() == codigoLivro){
+                            livro.setIsDisponivel();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void imprimirMenu(){
@@ -109,6 +135,13 @@ public class Biblioteca {
     public void iniciarAtendimento(){
         Scanner s = new Scanner(System.in);
         Scanner s1 = new Scanner(System.in);
+
+        int codigoLivro;
+        int codigoCliente;
+        String nomeCliente;
+        String emailCliente;
+        String dataNascimentoCliente;
+
         int menu = 0;
         do {
             imprimirMenu();
@@ -119,9 +152,7 @@ public class Biblioteca {
                     System.out.println("Encerrando...");
                     break;
                 case 1:
-                    String nomeCliente;
-                    String emailCliente;
-                    String dataNascimentoCliente;
+
                     System.out.println("Inserir nome do cliente:");
                     nomeCliente = s1.nextLine();
                     System.out.println("Inserir email do cliente:");
@@ -133,13 +164,10 @@ public class Biblioteca {
                 case 2:
                     String nomeAutor;
                     String tituloLivro;
-                    //String dataNascimento;
                     System.out.println("Inserir nome do autor:");
                     nomeAutor = s1.nextLine();
                     System.out.println("Inserir titulo do livro:");
                     tituloLivro = s1.nextLine();
-                    //System.out.println("Inserir data de nascimento do autor:");
-                    //dataNascimento = s.nextLine();
                     adicionarLivro(new Livro(tituloLivro, nomeAutor));
                     break;
                 case 3:
@@ -147,8 +175,6 @@ public class Biblioteca {
                     listarLivrosDisponiveis();
                     break;
                 case 4:
-                    int codigoLivro;
-                    int codigoCliente;
                     Cliente atual;
                     Livro desejado;
                     System.out.println("Selecione um dos livros abaixo:");
@@ -169,9 +195,14 @@ public class Biblioteca {
                     listarClientes();
                     break;
                 case 6:
+                    System.out.println("Listagem de livros emprestados:");
                     listarEmprestimos();
                     break;
                 case 7:
+                    int codigoCliente1;
+                    System.out.println("Inserir codigo do cliente:");
+                    codigoCliente = s1.nextInt();
+                    devolverLivro(codigoCliente);
                     break;
                 default:
                     System.out.println("Erro! Digite uma operação válida!");
