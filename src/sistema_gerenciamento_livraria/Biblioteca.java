@@ -1,6 +1,7 @@
 package sistema_gerenciamento_livraria;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -113,6 +114,7 @@ public class Biblioteca {
                             livro.setIsDisponivel();
                         }
                     }
+                    System.out.println("Devolução efetuada!");
                 }
             }
         }
@@ -123,89 +125,94 @@ public class Biblioteca {
         System.out.println("Bem-vindo ao sistema de livraria 1.0!!");
         System.out.println("1 - Cadastrar Cliente");
         System.out.println("2 - Cadastrar Livro");
+        System.out.println("3 - Buscar livro");
         System.out.println("3 - Listar livros disponíveis");
-        System.out.println("4 - Fazer emprestimo!");
-        System.out.println("5 - Listar Clientes!");
-        System.out.println("6 - Exibir histórico de emprestimos");
-        System.out.println("7 - Efetuar devolução");
+        System.out.println("5 - Fazer emprestimo!");
+        System.out.println("6 - Listar Clientes!");
+        System.out.println("7 - Exibir histórico de emprestimos");
+        System.out.println("8 - Efetuar devolução");
         System.out.println("0 - Encerrar atendimento");
         System.out.println("===============================");
     }
 
     public void iniciarAtendimento(){
-        Scanner s = new Scanner(System.in);
-        Scanner s1 = new Scanner(System.in);
-
         int codigoLivro;
         int codigoCliente;
         String nomeCliente;
         String emailCliente;
         String dataNascimentoCliente;
 
-        int menu = 0;
+        int menu = 999999;
         do {
-            imprimirMenu();
-            menu = s.nextInt();
-
-            switch (menu){
-                case 0:
-                    System.out.println("Encerrando...");
-                    break;
-                case 1:
-
-                    System.out.println("Inserir nome do cliente:");
-                    nomeCliente = s1.nextLine();
-                    System.out.println("Inserir email do cliente:");
-                    emailCliente = s1.nextLine();
-                    System.out.println("Inserir data de nascimento do cliente: (YYYY-MM-DD)");
-                    dataNascimentoCliente = s1.nextLine();
-                    cadastrarCliente(new Cliente(nomeCliente, emailCliente, dataNascimentoCliente));
-                    break;
-                case 2:
-                    String nomeAutor;
-                    String tituloLivro;
-                    System.out.println("Inserir nome do autor:");
-                    nomeAutor = s1.nextLine();
-                    System.out.println("Inserir titulo do livro:");
-                    tituloLivro = s1.nextLine();
-                    adicionarLivro(new Livro(tituloLivro, nomeAutor));
-                    break;
-                case 3:
-                    System.out.println("Livros Disponíveis para empréstimo");
-                    listarLivrosDisponiveis();
-                    break;
-                case 4:
-                    Cliente atual;
-                    Livro desejado;
-                    System.out.println("Selecione um dos livros abaixo:");
-                    listarLivrosDisponiveis();
-                    codigoLivro = s1.nextInt();
-                    System.out.println("Inserir código do cliente::");
-                    codigoCliente = s1.nextInt();
-                    atual = getClienteById(codigoCliente);
-                    desejado = getLivroById(codigoLivro);
-                    if(atual != null && desejado != null){
-                        emprestimoLivro(codigoLivro, atual, desejado);
-                    }else{
-                        System.out.println("Código(s) inválido(s), verifique e  digite novamente!");
-                    }
-                    break;
-                case 5:
-                    System.out.println("Listagem de clientes cadastrados:");
-                    listarClientes();
-                    break;
-                case 6:
-                    System.out.println("Listagem de livros emprestados:");
-                    listarEmprestimos();
-                    break;
-                case 7:
-                    int codigoCliente1;
-                    System.out.println("Inserir codigo do cliente:");
-                    codigoCliente = s1.nextInt();
-                    devolverLivro(codigoCliente);
-                    break;
-                default:
-                    System.out.println("Erro! Digite uma operação válida!");
+            try{
+                Scanner s = new Scanner(System.in);
+                Scanner s1 = new Scanner(System.in);
+                imprimirMenu();
+                menu = s.nextInt();
+                switch (menu){
+                    case 0:
+                        System.out.println("Encerrando...");
+                        break;
+                    case 1:
+                        System.out.println("Inserir nome do cliente:");
+                        nomeCliente = s1.nextLine();
+                        System.out.println("Inserir email do cliente:");
+                        emailCliente = s1.nextLine();
+                        System.out.println("Inserir data de nascimento do cliente: (YYYY-MM-DD)");
+                        dataNascimentoCliente = s1.nextLine();
+                        cadastrarCliente(new Cliente(nomeCliente, emailCliente, dataNascimentoCliente));
+                        break;
+                    case 2:
+                        String nomeAutor;
+                        String tituloLivro;
+                        System.out.println("Inserir nome do autor:");
+                        nomeAutor = s1.nextLine();
+                        System.out.println("Inserir titulo do livro:");
+                        tituloLivro = s1.nextLine();
+                        adicionarLivro(new Livro(tituloLivro, nomeAutor));
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        System.out.println("Livros Disponíveis para empréstimo");
+                        listarLivrosDisponiveis();
+                        break;
+                    case 5:
+                        Cliente atual;
+                        Livro desejado;
+                        System.out.println("Selecione um dos livros abaixo:");
+                        listarLivrosDisponiveis();
+                        codigoLivro = s1.nextInt();
+                        System.out.println("Inserir código do cliente::");
+                        codigoCliente = s1.nextInt();
+                        atual = getClienteById(codigoCliente);
+                        desejado = getLivroById(codigoLivro);
+                        if(atual != null && desejado != null){
+                            emprestimoLivro(codigoLivro, atual, desejado);
+                        }else{
+                            System.out.println("Código(s) inválido(s), verifique e  digite novamente!");
+                        }
+                        break;
+                    case 6:
+                        System.out.println("Listagem de clientes cadastrados:");
+                        listarClientes();
+                        break;
+                    case 7:
+                        System.out.println("Listagem de livros emprestados:");
+                        listarEmprestimos();
+                        break;
+                    case 8:
+                        System.out.println("Inserir codigo do cliente:");
+                        codigoCliente = s1.nextInt();
+                        devolverLivro(codigoCliente);
+                        break;
+                    default:
+                        System.out.println("Erro! Digite uma operação válida!");
+                }
+            } catch (InputMismatchException error){
+                System.out.println("Erro ao inserir informação no sistema, tente novamente!");
+            } catch (Exception error){
+                System.out.println("Erro!!");
             }
         }while(menu != 0);
     }
