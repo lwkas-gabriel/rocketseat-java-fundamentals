@@ -120,17 +120,44 @@ public class Biblioteca {
         }
     }
 
+    public void getLivrosByAutor(String nomeAutor){
+        if(livros.isEmpty()){
+            System.out.println("Nenhum livro cadastrado na base de dados!");
+        }else{
+            for (Livro livro : this.livros){
+                if(livro.getAutor().toLowerCase().contains(nomeAutor)){
+                    System.out.println("Nome do Livro: " + livro.getTitulo());
+                    System.out.println("Autor: "  + livro.getAutor());
+                }
+            }
+        }
+    }
+
+    public void getLivrosByTitulo(String tituloLivro){
+        if(livros.isEmpty()){
+            System.out.println("Nenhum livro cadastrado na base de dados!");
+        }else{
+            for (Livro livro : this.livros){
+                if(livro.getTitulo().toLowerCase().contains(tituloLivro)){
+                    System.out.println("Nome do Livro: " + livro.getTitulo());
+                    System.out.println("Autor: "  + livro.getAutor());
+                }
+            }
+        }
+    }
+
     public void imprimirMenu(){
         System.out.println("===============================");
         System.out.println("Bem-vindo ao sistema de livraria 1.0!!");
         System.out.println("1 - Cadastrar Cliente");
         System.out.println("2 - Cadastrar Livro");
-        System.out.println("3 - Buscar livro");
-        System.out.println("3 - Listar livros disponíveis");
-        System.out.println("5 - Fazer emprestimo!");
-        System.out.println("6 - Listar Clientes!");
-        System.out.println("7 - Exibir histórico de emprestimos");
-        System.out.println("8 - Efetuar devolução");
+        System.out.println("3 - Buscar livro por autor");
+        System.out.println("4 - Buscar livro por titulo");
+        System.out.println("5 - Listar livros disponíveis");
+        System.out.println("6 - Fazer emprestimo!");
+        System.out.println("7 - Listar Clientes!");
+        System.out.println("8 - Exibir histórico de emprestimos");
+        System.out.println("9 - Efetuar devolução");
         System.out.println("0 - Encerrar atendimento");
         System.out.println("===============================");
     }
@@ -147,6 +174,8 @@ public class Biblioteca {
             try{
                 Scanner s = new Scanner(System.in);
                 Scanner s1 = new Scanner(System.in);
+                String nomeAutor;
+                String tituloLivro;
                 imprimirMenu();
                 menu = s.nextInt();
                 switch (menu){
@@ -163,8 +192,6 @@ public class Biblioteca {
                         cadastrarCliente(new Cliente(nomeCliente, emailCliente, dataNascimentoCliente));
                         break;
                     case 2:
-                        String nomeAutor;
-                        String tituloLivro;
                         System.out.println("Inserir nome do autor:");
                         nomeAutor = s1.nextLine();
                         System.out.println("Inserir titulo do livro:");
@@ -172,12 +199,20 @@ public class Biblioteca {
                         adicionarLivro(new Livro(tituloLivro, nomeAutor));
                         break;
                     case 3:
+                        System.out.println("Inserir nome do autor:");
+                        nomeAutor = s1.nextLine();
+                        getLivrosByAutor(nomeAutor);
                         break;
                     case 4:
+                        System.out.println("Inserir titulo do livro:");
+                        tituloLivro = s1.nextLine();
+                        getLivrosByTitulo(tituloLivro);
+                        break;
+                    case 5:
                         System.out.println("Livros Disponíveis para empréstimo");
                         listarLivrosDisponiveis();
                         break;
-                    case 5:
+                    case 6:
                         Cliente atual;
                         Livro desejado;
                         System.out.println("Selecione um dos livros abaixo:");
@@ -193,15 +228,15 @@ public class Biblioteca {
                             System.out.println("Código(s) inválido(s), verifique e  digite novamente!");
                         }
                         break;
-                    case 6:
+                    case 7:
                         System.out.println("Listagem de clientes cadastrados:");
                         listarClientes();
                         break;
-                    case 7:
+                    case 8:
                         System.out.println("Listagem de livros emprestados:");
                         listarEmprestimos();
                         break;
-                    case 8:
+                    case 9:
                         System.out.println("Inserir codigo do cliente:");
                         codigoCliente = s1.nextInt();
                         devolverLivro(codigoCliente);
