@@ -12,14 +12,16 @@ public class Livro {
     private boolean isDisponivel;
     private LocalDate dataCadastro;
     private LocalDateTime dataAtualizacao;
+    private Genero genero;
 
-    public Livro(String titulo, String autor){
+    public Livro(String titulo, String autor, Genero genero){
         this.id = new Random().nextInt(Integer.MAX_VALUE);
         this.titulo = titulo;
         this.autor = autor;
         this.isDisponivel = true; // se true = disponivel, se false = não disponível
         this.dataCadastro = LocalDate.now();
         this.dataAtualizacao = LocalDateTime.now();
+        this.genero = genero;
     }
 
     public int getId(){
@@ -57,6 +59,10 @@ public class Livro {
     public void setDataAtualizacao(){
         this.dataAtualizacao = LocalDateTime.now();
 
+    }
+
+    public Genero getGenero(){
+        return this.genero;
     }
 
     public LocalDateTime getDataAtualizacao(){

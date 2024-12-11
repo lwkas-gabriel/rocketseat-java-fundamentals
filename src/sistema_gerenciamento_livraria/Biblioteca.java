@@ -10,12 +10,14 @@ public class Biblioteca {
     private List<Autor> autores;
     private List<Cliente> clientes;
     private List<Emprestimo> emprestimos;
+    private Genero[] generos;
 
     public Biblioteca() {
         this.autores = new ArrayList<>();
         this.emprestimos = new ArrayList<>();;
         this.livros = new ArrayList<>();
         this.clientes = new ArrayList<>();
+        this.generos = Genero.values();
     }
 
     public Cliente getClienteById(int codigo){
@@ -62,7 +64,7 @@ public class Biblioteca {
         }else{
             for(Livro livro : this.livros){
                 if(livro.getIsDisonivel()){
-                    System.out.println(livro.getId() + " - " + livro.getTitulo() + " (" +livro.getAutor() + ")");
+                    System.out.println(livro.getId() + " - " + livro.getTitulo() + " (" +livro.getAutor() + ")" + " - " + livro.getGenero().toString());
                 }
             }
         }
@@ -77,6 +79,7 @@ public class Biblioteca {
                 System.out.println("Empréstimo efetuado por:  " + emprestimo.getCliente().getNome());
                 System.out.println("Nome do Livro: " + emprestimo.getLivroEmprestado().getTitulo());
                 System.out.println("Autor: "  + emprestimo.getLivroEmprestado().getAutor());
+                System.out.println("Gênero: "  + emprestimo.getLivroEmprestado().getGenero().toString());
                 System.out.println("Data do Empréstimo: " + emprestimo.getHorarioEmprestimo());
                 System.out.println("Devolvido? " + ((emprestimo.isDevolvido()) ? "Sim." : "Não.") );
                 System.out.println("Data da devolução: " + ((emprestimo.isDevolvido()) ? emprestimo.getHorarioDevolucao() : "N/A") );
@@ -94,6 +97,13 @@ public class Biblioteca {
         }
         Emprestimo novoEmprestimo = new Emprestimo(livroDesejado, clienteAtual);
         emprestimos.add(novoEmprestimo);
+    }
+
+    public void imprimirListaGeneros(){
+        System.out.println("Escolha o gênero do livro:");
+        for(Genero genero : this.generos){
+            System.out.println((genero.ordinal() + 1) + " - " + genero);
+        }
     }
 
     public void getLivrosEmprestadosByClienteId(){
@@ -125,7 +135,7 @@ public class Biblioteca {
             System.out.println("Nenhum livro cadastrado na base de dados!");
         }else{
             for (Livro livro : this.livros){
-                if(livro.getAutor().toLowerCase().contains(nomeAutor)){
+                if(livro.getAutor().toLowerCase().contains(nomeAutor.toLowerCase())){
                     System.out.println("Nome do Livro: " + livro.getTitulo());
                     System.out.println("Autor: "  + livro.getAutor());
                 }
@@ -138,7 +148,7 @@ public class Biblioteca {
             System.out.println("Nenhum livro cadastrado na base de dados!");
         }else{
             for (Livro livro : this.livros){
-                if(livro.getTitulo().toLowerCase().contains(tituloLivro)){
+                if(livro.getTitulo().toLowerCase().contains(tituloLivro.toLowerCase())){
                     System.out.println("Nome do Livro: " + livro.getTitulo());
                     System.out.println("Autor: "  + livro.getAutor());
                 }
@@ -176,6 +186,7 @@ public class Biblioteca {
                 Scanner s1 = new Scanner(System.in);
                 String nomeAutor;
                 String tituloLivro;
+                int genero;
                 imprimirMenu();
                 menu = s.nextInt();
                 switch (menu){
@@ -196,7 +207,14 @@ public class Biblioteca {
                         nomeAutor = s1.nextLine();
                         System.out.println("Inserir titulo do livro:");
                         tituloLivro = s1.nextLine();
-                        adicionarLivro(new Livro(tituloLivro, nomeAutor));
+                        imprimirListaGeneros();
+                        genero = s1.nextInt();
+                        if(genero  < 1 || genero > generos.length){
+                            System.out.println("Opção inválida!");
+                        }else{
+                            Genero generoEscolhido = generos[genero - 1];
+                            adicionarLivro(new Livro(tituloLivro, nomeAutor, generoEscolhido));
+                        }
                         break;
                     case 3:
                         System.out.println("Inserir nome do autor:");
