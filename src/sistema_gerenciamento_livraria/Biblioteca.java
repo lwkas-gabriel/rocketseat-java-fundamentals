@@ -38,6 +38,19 @@ public class Biblioteca {
         return null;
     }
 
+    public void getLivrosByGenero(int codigoGenero){
+        if(codigoGenero  < 1 || codigoGenero > generos.length){
+            System.out.println("Opção inválida!");
+        }else{
+            Genero generoEscolhido = generos[codigoGenero - 1];
+            for(Livro livro : this.livros){
+                if(livro.getGenero() == generoEscolhido){
+                    System.out.println(livro.getId() + " - " + livro.getTitulo() + " (" +livro.getAutor() + ")" + " - " + livro.getGenero().toString());
+                }
+            }
+        }
+    }
+
     public void cadastrarCliente(Cliente novoCliente){
         this.clientes.add(novoCliente);
         System.out.println("Cliente cadastrado com sucesso!");
@@ -163,11 +176,12 @@ public class Biblioteca {
         System.out.println("2 - Cadastrar Livro");
         System.out.println("3 - Buscar livro por autor");
         System.out.println("4 - Buscar livro por titulo");
-        System.out.println("5 - Listar livros disponíveis");
-        System.out.println("6 - Fazer emprestimo!");
-        System.out.println("7 - Listar Clientes!");
-        System.out.println("8 - Exibir histórico de emprestimos");
-        System.out.println("9 - Efetuar devolução");
+        System.out.println("5 - Buscar livro por gênero");
+        System.out.println("6 - Listar livros disponíveis");
+        System.out.println("7 - Fazer emprestimo!");
+        System.out.println("8 - Listar Clientes!");
+        System.out.println("9 - Exibir histórico de emprestimos");
+        System.out.println("10 - Efetuar devolução");
         System.out.println("0 - Encerrar atendimento");
         System.out.println("===============================");
     }
@@ -227,10 +241,15 @@ public class Biblioteca {
                         getLivrosByTitulo(tituloLivro);
                         break;
                     case 5:
+                        imprimirListaGeneros();
+                        genero = s1.nextInt();
+                        getLivrosByGenero(genero);
+                        break;
+                    case 6:
                         System.out.println("Livros Disponíveis para empréstimo");
                         listarLivrosDisponiveis();
                         break;
-                    case 6:
+                    case 7:
                         Cliente atual;
                         Livro desejado;
                         System.out.println("Selecione um dos livros abaixo:");
@@ -246,15 +265,15 @@ public class Biblioteca {
                             System.out.println("Código(s) inválido(s), verifique e  digite novamente!");
                         }
                         break;
-                    case 7:
+                    case 8:
                         System.out.println("Listagem de clientes cadastrados:");
                         listarClientes();
                         break;
-                    case 8:
+                    case 9:
                         System.out.println("Listagem de livros emprestados:");
                         listarEmprestimos();
                         break;
-                    case 9:
+                    case 10:
                         System.out.println("Inserir codigo do cliente:");
                         codigoCliente = s1.nextInt();
                         devolverLivro(codigoCliente);
