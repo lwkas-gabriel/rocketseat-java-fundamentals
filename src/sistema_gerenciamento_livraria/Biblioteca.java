@@ -56,9 +56,19 @@ public class Biblioteca {
         System.out.println("Cliente cadastrado com sucesso!");
     }
 
+    public void adicionarLivro(String nomeLivro, String nomeAutor, int codigoGenero){
+        if(codigoGenero  < 1 || codigoGenero > generos.length){
+            System.out.println("Opção inválida!");
+        }else{
+            Genero generoEscolhido = generos[codigoGenero - 1];
+            this.livros.add(new Livro(nomeLivro, nomeAutor, generoEscolhido));
+            System.out.println("Livro cadastrado com sucesso!");
+        }
+
+    }
+
     public void adicionarLivro(Livro novoLivro){
         this.livros.add(novoLivro);
-        System.out.println("Livro cadastrado com sucesso!");
     }
 
     public void listarClientes(){
@@ -101,15 +111,21 @@ public class Biblioteca {
         }
     }
 
-    public void emprestimoLivro(int codigo, Cliente clienteAtual, Livro livroDesejado){
-        for(Livro livro : this.livros){
-            if(livro.getId() == codigo){
-                System.out.println("Empréstimo Efetuado!");
-                livro.setIsDisponivel();
+    public void emprestimoLivro(int codigoCliente, int codigoLivro){
+        Cliente clienteAtual = getClienteById(codigoCliente);
+        Livro livroDesejado = getLivroById(codigoLivro);
+        if(clienteAtual != null && livroDesejado != null){
+            for(Livro livro : this.livros){
+                if(livro.getId() == livroDesejado.getId()){
+                    System.out.println("Empréstimo de "  + livro.getTitulo() + " Efetuado!");
+                    livro.setIsDisponivel();
+                }
             }
+            Emprestimo novoEmprestimo = new Emprestimo(livroDesejado, clienteAtual);
+            emprestimos.add(novoEmprestimo);
+        }else{
+            System.out.println("Código(s) inválido(s), verifique e  digite novamente!");
         }
-        Emprestimo novoEmprestimo = new Emprestimo(livroDesejado, clienteAtual);
-        emprestimos.add(novoEmprestimo);
     }
 
     public void imprimirListaGeneros(){
@@ -187,17 +203,16 @@ public class Biblioteca {
     }
 
     public void iniciarAtendimento(){
-        int codigoLivro;
-        int codigoCliente;
-        String nomeCliente;
-        String emailCliente;
-        String dataNascimentoCliente;
-
         int menu = 999999;
         do {
             try{
                 Scanner s = new Scanner(System.in);
                 Scanner s1 = new Scanner(System.in);
+                int codigoLivro;
+                int codigoCliente;
+                String nomeCliente;
+                String emailCliente;
+                String dataNascimentoCliente;
                 String nomeAutor;
                 String tituloLivro;
                 int genero;
@@ -223,12 +238,7 @@ public class Biblioteca {
                         tituloLivro = s1.nextLine();
                         imprimirListaGeneros();
                         genero = s1.nextInt();
-                        if(genero  < 1 || genero > generos.length){
-                            System.out.println("Opção inválida!");
-                        }else{
-                            Genero generoEscolhido = generos[genero - 1];
-                            adicionarLivro(new Livro(tituloLivro, nomeAutor, generoEscolhido));
-                        }
+                        adicionarLivro(tituloLivro, nomeAutor, genero);
                         break;
                     case 3:
                         System.out.println("Inserir nome do autor:");
@@ -250,20 +260,12 @@ public class Biblioteca {
                         listarLivrosDisponiveis();
                         break;
                     case 7:
-                        Cliente atual;
-                        Livro desejado;
                         System.out.println("Selecione um dos livros abaixo:");
                         listarLivrosDisponiveis();
                         codigoLivro = s1.nextInt();
                         System.out.println("Inserir código do cliente::");
                         codigoCliente = s1.nextInt();
-                        atual = getClienteById(codigoCliente);
-                        desejado = getLivroById(codigoLivro);
-                        if(atual != null && desejado != null){
-                            emprestimoLivro(codigoLivro, atual, desejado);
-                        }else{
-                            System.out.println("Código(s) inválido(s), verifique e  digite novamente!");
-                        }
+                        emprestimoLivro(codigoLivro, codigoCliente);
                         break;
                     case 8:
                         System.out.println("Listagem de clientes cadastrados:");
